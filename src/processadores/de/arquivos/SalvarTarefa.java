@@ -34,7 +34,6 @@ public class SalvarTarefa {
             String linhaCSV = String.format("%s,%s,%d,%s,%s,%s,%s", nome, descricao, nivelPrioridade, categoria, dataTermino, dataCriacao, status);
             escritor.write(linhaCSV);
             escritor.newLine(); // Adicionar uma nova linha
-            escritor.flush();
         } catch (IOException e) {
             System.err.println("Erro ao escrever no arquivo: " + e.getMessage());
         }

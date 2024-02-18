@@ -56,6 +56,8 @@ public class CriarTarefa {
                     break;
                 }
             }
+
+            categoria = categoriasSalvas.get(escolhaCategoria);
         }
 
         System.out.println("Selecione o status da Tarefa:\n" +

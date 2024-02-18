@@ -1,50 +1,59 @@
 package aplicacao;
 
+import processadores.de.arquivos.CriarCategoria;
+import processadores.de.arquivos.LeitorCategorias;
+
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Aplicacao {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner ler = new Scanner(System.in);
+        LeitorCategorias leitor = new LeitorCategorias("Categorias.txt");
+        CriarCategoria novaCategoria = new CriarCategoria("Categorias.txt");
 
         String nome, descricao, categoria, status;
         int nivelPrioridade, escolhaStatus, escolhaCategoria;
         LocalDate dataTermino = null;
         status = null;
         categoria = null;
+        escolhaCategoria = -2;
 
         System.out.println("Digite o nome da Tarefa:");
         nome = ler.next();
         System.out.println("Digite a descrição da Tarefa:");
         descricao = ler.next();
 
+        while (escolhaCategoria == -2) {
+            System.out.println("Selecione a categoria da Tarefa:");
+            System.out.println("0. Criar categoria");
+            List<String> categoriasSalvas = leitor.lerCategoriasSalvas();
+            escolhaCategoria = ler.nextInt();
+            escolhaCategoria -= 1;
 
-        System.out.println("Selecione a categoria da Tarefa:");
-        escolhaCategoria = ler.nextInt();
-
-        while (true) {
-            if (escolhaCategoria < 1 || escolhaCategoria > 3) {
-                System.out.println("Categoria inválida!!!");
-                System.out.println("Selecione a categoria da Tarefa:");
-                escolhaCategoria = ler.nextInt();
-            } else {
-                break;
+            while (true) {
+                if (escolhaCategoria < -1 || escolhaCategoria > categoriasSalvas.size() - 1) {
+                    System.out.println("Opção inválida!!!");
+                    System.out.println("Selecione a categoria da Tarefa:");
+                    System.out.println("0. Criar categoria");
+                    categoriasSalvas = leitor.lerCategoriasSalvas();
+                    escolhaCategoria = ler.nextInt();
+                    escolhaCategoria -= 1;
+                } else if (escolhaCategoria == -1) {
+                    ler.nextLine();
+                    System.out.println("Digite o nome da categoria que você deseja criar:");
+                    categoria = ler.nextLine();
+                    novaCategoria.salvarCategoria(categoria);
+                    break;
+                } else {
+                    break;
+                }
             }
-        }
-
-        switch (escolhaCategoria) {
-            case 1:
-                categoria = "1";
-                break;
-            case 2:
-                categoria = "2";
-                break;
-            case 3:
-                categoria = "3";
-                break;
         }
 
         System.out.println("Selecione o status da Tarefa:\n" +

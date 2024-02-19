@@ -24,55 +24,27 @@ public class TodoList {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public String getDescricao() {
         return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
     }
 
     public String getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-
     public String getStatus() {
         return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public LocalDate getDataTermino() {
-        return dataTermino;
-    }
-
-    public void setDataTermino(LocalDate dataTermino) {
-        this.dataTermino = dataTermino;
-    }
-
-    public LocalDateTime getDataCriacao() {
-        return dataCriacao;
-    }
-
-    public void setDataCriacao(LocalDateTime dataCriacao) {
-        this.dataCriacao = dataCriacao;
     }
 
     public int getNivelPrioridade() {
         return nivelPrioridade;
     }
 
-    public void setNivelPrioridade(int nivelPrioridade) {
-        this.nivelPrioridade = nivelPrioridade;
+    public LocalDateTime getDataCriacao() {
+        return dataCriacao;
+    }
+
+    public LocalDate getDataTermino() {
+        return dataTermino;
     }
 }

@@ -27,9 +27,9 @@ public class CriarTarefa {
         escolhaCategoria = -2;
 
         System.out.println("Digite o nome da Tarefa:");
-        nome = ler.next();
+        nome = ler.nextLine();
         System.out.println("Digite a descrição da Tarefa:");
-        descricao = ler.next();
+        descricao = ler.nextLine();;
 
         while (escolhaCategoria == -2) {
             System.out.println("Selecione a categoria da Tarefa:");
@@ -65,6 +65,7 @@ public class CriarTarefa {
                 "2. Doing\n" +
                 "3. Done");
         escolhaStatus = ler.nextInt();
+        ler.nextLine();
 
         while (true) {
             if (escolhaStatus < 1 || escolhaStatus > 3) {
@@ -74,6 +75,7 @@ public class CriarTarefa {
                         "2. Doing\n" +
                         "3. Done");
                 escolhaStatus = ler.nextInt();
+                ler.nextLine();
             } else {
                 break;
             }
@@ -93,12 +95,14 @@ public class CriarTarefa {
 
         System.out.println("Digite o nível de prioridade da Tarefa entre 1 a 5 (sendo 1 para tarefa sem prioridade e 5 para tarefa urgente):");
         nivelPrioridade = ler.nextInt();
+        ler.nextLine();
 
         while (true) {
             if (nivelPrioridade < 1 || nivelPrioridade > 5) {
                 System.out.println("Nível de prioridade inválido!!!");
                 System.out.println("Digite o nível de prioridade da Tarefa entre 1 a 5 (sendo 1 para tarefa sem prioridade e 5 para tarefa urgente):");
                 nivelPrioridade = ler.nextInt();
+                ler.nextLine();
             } else {
                 break;
             }
@@ -118,7 +122,7 @@ public class CriarTarefa {
                 } catch (DateTimeParseException e) {
                     System.out.println("Formato de data inválido!");
                     System.out.println("Digite a data (dd/mm/aaaa):");
-                    dataDigitada = ler.next().trim();
+                    dataDigitada = ler.nextLine().trim();
                 }
             }
         } catch (DateTimeParseException e) {

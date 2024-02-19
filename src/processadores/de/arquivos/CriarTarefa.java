@@ -11,31 +11,41 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CriarTarefa {
-    Scanner ler = new Scanner(System.in);
-    LeitorCategorias leitorCategorias = new LeitorCategorias("Categorias.txt");
-    SalvarTarefa salvarTarefa = new SalvarTarefa("TodoList.csv");
-    CriarCategoria novaCategoria = new CriarCategoria("Categorias.txt");
+    static Scanner ler = new Scanner(System.in);
+    static LeitorCategorias leitorCategorias;
 
-    String nome, descricao, categoria, status;
-    int nivelPrioridade, escolhaStatus, escolhaCategoria;
-    LocalDate dataTermino;
-
-    public CriarTarefa() throws IOException {
+    static {
+        try {
+            leitorCategorias = new LeitorCategorias("Categorias.txt");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public void criarTarefa() throws IOException {
+    static SalvarTarefa salvarTarefa = new SalvarTarefa("TodoList.csv");
+    static CriarCategoria novaCategoria = new CriarCategoria("Categorias.txt");
+
+    static String nome, descricao, categoria, status;
+    static int escolhaStatus;
+    static int escolhaCategoria, nivelPrioridade;
+    static LocalDate dataTermino;
+
+    public CriarTarefa() {
+    }
+
+    public static void criarTarefa() throws IOException {
         escolhaCategoria = -2;
 
         System.out.println("Digite o nome da Tarefa:");
         nome = ler.nextLine();
         System.out.println("Digite a descrição da Tarefa:");
-        descricao = ler.nextLine();;
+        descricao = ler.nextLine();
 
         while (escolhaCategoria == -2) {
             System.out.println("Selecione a categoria da Tarefa:");
             System.out.println("0. Criar categoria");
             List<String> categoriasSalvas = leitorCategorias.lerCategoriasSalvas();
-            escolhaCategoria = ler.nextInt();
+            escolhaCategoria = Integer.parseInt(ler.nextLine());
             escolhaCategoria -= 1;
 
             while (true) {
@@ -44,28 +54,25 @@ public class CriarTarefa {
                     System.out.println("Selecione a categoria da Tarefa:");
                     System.out.println("0. Criar categoria");
                     categoriasSalvas = leitorCategorias.lerCategoriasSalvas();
-                    escolhaCategoria = ler.nextInt();
+                    escolhaCategoria = Integer.parseInt(ler.nextLine());
                     escolhaCategoria -= 1;
                 } else if (escolhaCategoria == -1) {
-                    ler.nextLine();
                     System.out.println("Digite o nome da categoria que você deseja criar:");
                     categoria = ler.nextLine();
                     novaCategoria.salvarCategoria(categoria);
                     break;
                 } else {
+                    categoria = categoriasSalvas.get(escolhaCategoria);
                     break;
                 }
             }
-
-            categoria = categoriasSalvas.get(escolhaCategoria);
         }
 
         System.out.println("Selecione o status da Tarefa:\n" +
                 "1. Todo\n" +
                 "2. Doing\n" +
                 "3. Done");
-        escolhaStatus = ler.nextInt();
-        ler.nextLine();
+        escolhaStatus = Integer.parseInt(ler.nextLine());
 
         while (true) {
             if (escolhaStatus < 1 || escolhaStatus > 3) {
@@ -74,8 +81,7 @@ public class CriarTarefa {
                         "1. Todo\n" +
                         "2. Doing\n" +
                         "3. Done");
-                escolhaStatus = ler.nextInt();
-                ler.nextLine();
+                escolhaStatus = Integer.parseInt(ler.nextLine());
             } else {
                 break;
             }
@@ -94,22 +100,20 @@ public class CriarTarefa {
         }
 
         System.out.println("Digite o nível de prioridade da Tarefa entre 1 a 5 (sendo 1 para tarefa sem prioridade e 5 para tarefa urgente):");
-        nivelPrioridade = ler.nextInt();
-        ler.nextLine();
+        nivelPrioridade = Integer.parseInt(ler.nextLine());
 
         while (true) {
             if (nivelPrioridade < 1 || nivelPrioridade > 5) {
                 System.out.println("Nível de prioridade inválido!!!");
                 System.out.println("Digite o nível de prioridade da Tarefa entre 1 a 5 (sendo 1 para tarefa sem prioridade e 5 para tarefa urgente):");
-                nivelPrioridade = ler.nextInt();
-                ler.nextLine();
+                nivelPrioridade = Integer.parseInt(ler.nextLine());
             } else {
                 break;
             }
         }
 
         System.out.println("Digite a data máxima para o término da Tarefa (dd/mm/aaaa):");
-        String dataDigitada = ler.next().trim();
+        String dataDigitada = ler.nextLine().trim();
 
         // Criar um objeto DateTimeFormatter para analisar a data
         DateTimeFormatter formatacao = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -138,7 +142,5 @@ public class CriarTarefa {
 
         salvarTarefa.salvarTarefa(tarefa.getNome(), tarefa.getDescricao(), tarefa.getNivelPrioridade(), tarefa.getCategoria(),
                 tarefa.getDataTermino(), tarefa.getDataCriacao(), tarefa.getStatus());
-
-        ler.close();
     }
 }

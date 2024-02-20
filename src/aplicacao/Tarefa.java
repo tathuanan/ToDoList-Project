@@ -3,14 +3,14 @@ package aplicacao;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class TodoList {
+public class Tarefa {
 
     private String nome, descricao, categoria, status;
     private int nivelPrioridade;
     private LocalDateTime dataCriacao;
     private LocalDate dataTermino;
 
-    public TodoList(String nome, String descricao, String categoria, String status, LocalDate dataTermino, LocalDateTime dataCriacao, int nivelPrioridade) {
+    public Tarefa(String nome, String descricao, String categoria, String status, LocalDate dataTermino, LocalDateTime dataCriacao, int nivelPrioridade) {
         this.nome = nome;
         this.descricao = descricao;
         this.categoria = categoria;

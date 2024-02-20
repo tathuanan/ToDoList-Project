@@ -1,6 +1,6 @@
 package processadores.de.arquivos;
 
-import aplicacao.TodoList;
+import aplicacao.Tarefa;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -138,7 +138,7 @@ public class CriarTarefa {
         LocalDateTime dataCriacao = LocalDateTime.now();
 
 
-        TodoList tarefa = new TodoList(nome, descricao, categoria, status, dataTermino, dataCriacao, nivelPrioridade);
+        Tarefa tarefa = new Tarefa(nome, descricao, categoria, status, dataTermino, dataCriacao, nivelPrioridade);
 
         salvarTarefa.salvarTarefa(tarefa.getNome(), tarefa.getDescricao(), tarefa.getNivelPrioridade(), tarefa.getCategoria(),
                 tarefa.getDataTermino(), tarefa.getDataCriacao(), tarefa.getStatus());

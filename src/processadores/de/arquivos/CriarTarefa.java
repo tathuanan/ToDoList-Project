@@ -45,6 +45,11 @@ public class CriarTarefa {
             System.out.println("Selecione a categoria da Tarefa:");
             System.out.println("0. Criar categoria");
             List<String> categoriasSalvas = leitorCategorias.lerCategoriasSalvas();
+            int numeroCategoria = 1;
+            for (String nome : categoriasSalvas) {
+                System.out.println(numeroCategoria + ". " + nome);
+                numeroCategoria++;
+            }
             escolhaCategoria = Integer.parseInt(ler.nextLine());
             escolhaCategoria -= 1;
 

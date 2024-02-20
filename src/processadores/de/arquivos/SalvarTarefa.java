@@ -1,11 +1,10 @@
 package processadores.de.arquivos;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class SalvarTarefa {
 
@@ -15,19 +14,6 @@ public class SalvarTarefa {
         this.nomeArquivo = nomeArquivo;
     }
 
-    public List<String> buscarCabecalho() throws IOException{
-        String linha = lerPrimeiraLinha(nomeArquivo);
-        String [] cabecalho = linha.split(",");
-        List<String> values = new ArrayList<String>();
-        values = Arrays.asList(cabecalho);
-        return values;
-    }
-
-    static String lerPrimeiraLinha(String path) throws IOException {
-        try (BufferedReader quebra = new BufferedReader(new FileReader(path))) {
-            return quebra.readLine();
-        }
-    }
     public void salvarTarefa(String nome, String descricao, int nivelPrioridade, String categoria, LocalDate dataTermino, LocalDateTime dataCriacao, String status ) {
         try (BufferedWriter escritor = new BufferedWriter(new FileWriter(nomeArquivo, true))) {
             // Persistir as informações da tarefa ao final do arquivo

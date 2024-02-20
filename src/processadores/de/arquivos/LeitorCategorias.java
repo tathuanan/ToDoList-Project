@@ -15,7 +15,6 @@ public class LeitorCategorias {
 
     public List<String> lerCategoriasSalvas() throws IOException {
         List<String> categoriasSalvas = new ArrayList<>();
-        int contador = 1;
         try (BufferedReader br = new BufferedReader(new FileReader(nomeArquivo))) {
             String linha;
             while ((linha = br.readLine()) != null) {
@@ -23,10 +22,6 @@ public class LeitorCategorias {
             }
         } catch (IOException e) {
             System.err.println("Erro ao ler o arquivo: " + e.getMessage());
-        }
-        for (String nome : categoriasSalvas) {
-            System.out.println(contador + ". " + nome);
-            contador++;
         }
         return categoriasSalvas;
     }

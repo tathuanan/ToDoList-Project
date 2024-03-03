@@ -5,7 +5,7 @@
     <title>TODO List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
@@ -73,30 +73,15 @@
         <textarea class="form-control" id="description" rows="4" placeholder="Faça uma descrição da Tarefa" required></textarea>
     </div>
     <div class="col-12">
-        <button type="createTask" class="btn btn-success">Criar Tarefa</button>
+        <button type="createTask" class="btn btn-success" id="createTask">Criar Tarefa</button>
     </div>
 </form>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous">
 </script>
-<!-- Bootstrap Bundle with Popper -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
-<script>
-    // Define a data atual
-    var today = new Date();
-
-    // Formata a data no formato YYYY-MM-DD (formato aceito pelo input type="date")
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); // Janeiro é 0!
-    var yyyy = today.getFullYear();
-
-    today = yyyy + '-' + mm + '-' + dd;
-
-    // Define o valor padrão para o campo de data
-    document.getElementById('createDate').value = today;
-    document.getElementById('deadLine').value = today
-</script>
+<script src="../scripts/CriarTarefa.js"></script>
 </body>
 </html>

@@ -10,7 +10,7 @@ body{
     margin-bottom: 1rem;
 }
 
-#main-home{
+#main-home {
     padding-top: 3rem;
     text-align: center;
     font-weight: bold;
@@ -24,6 +24,6 @@ body{
     padding: 2rem 15rem 2rem 15rem;
 }
 
-.btn{
+#createTask{
     margin-top: 3rem;
 }

@@ -12,32 +12,87 @@
 <div id="header">
     <h1>TODO List</h1>
 </div>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid" style="border-radius: 25px">
-        <a class="navbar-brand" href="Home.html">TODO List</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="CriarTarefa.html">Criar Tarefa</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="ListarTarefa.html">Listar Tarefa</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
 <div id="main-home">
     <p>Esta é a aplicação TODO List, capaz de criar e gerencias suas tarefas de modo rápido e prático</p>
 </div>
+<form class="row g-4" id="form-task" onsubmit="addTask()">
+    <div class="col-md-2">
+        <label for="taskName" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="taskName" required>
+    </div>
+    <div class="col-md-2">
+        <label for="category" class="form-label">Categoria</label>
+        <select id="category" class="form-select">
+            <option value="">--Selecione--</option>
+            <option value="Tarefas do AceleraZG">Tarefas do AceleraZG</option>
+            <option value="Tarefas da Faculdade">Tarefas da Faculdade</option>
+            <option value="Tarefas do Cotidiano">Tarefas do Cotidiano</option>
+        </select>
+    </div>
+    <div class="col-md-2">
+        <label for="priority" class="form-label">Nivel de Prioridade</label>
+        <select id="priority" class="form-select">
+            <option value="">--Selecione--</option>
+            <option value="5">5</option>
+            <option value="4">4</option>
+            <option value="3">3</option>
+            <option value="2">2</option>
+            <option value="1">1</option>
+        </select>
+    </div>
+    <div class="col-md-2">
+        <label for="status" class="form-label">Status</label>
+        <select id="status" class="form-select">
+            <option value="">--Selecione--</option>
+            <option value="To Do">To Do</option>
+            <option value="Doing">Doing</option>
+            <option value="Done">Done</option>
+        </select>
+    </div>
+    <div class="col-md-2">
+        <label for="createDate" class="form-label">Data de Criação</label>
+        <input type="date" class="form-control" id="createDate" readonly>
+    </div>
+    <div class="col-md-2">
+        <label for="deadLine" class="form-label">Data de Término</label>
+        <input type="date" class="form-control" id="deadLine" required>
+    </div>
+    <div class="col-md-12">
+        <label for="description" class="form-label">Descrição</label>
+        <textarea class="form-control" id="description" rows="3" placeholder="Faça uma descrição da Tarefa"
+                  required></textarea>
+    </div>
+    <div class="col-md-12">
+        <button type="submit" class="btn btn-success" id="createTaskButton">Criar Tarefa</button>
+    </div>
+</form>
+<div id="listTask">
+    <p>Lista de Tarefas</p>
+</div>
+<div id="table">
+    <table class="table table-dark table-striped" id="tableTask">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Nivel de Prioridade</th>
+            <th scope="col">Status</th>
+            <th scope="col">Data de Criação</th>
+            <th scope="col">Data Término</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Ações</th>
+        </tr>
+        </thead>
+        <tbody id="tableBody">
 
+        </tbody>
+    </table>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous">
 </script>
+<script src="../scripts/Main.js"></script>
 </body>
 </html>

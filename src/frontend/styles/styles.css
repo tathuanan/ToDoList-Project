@@ -1,5 +1,5 @@
 body{
-    padding: 1rem 0 1rem 0;
+    margin: 1rem 0 1rem 0;
     background-color: #32383e;
     color: white;
     font-family: sans-serif;
@@ -11,7 +11,7 @@ body{
 }
 
 #main-home {
-    padding-top: 3rem;
+    margin-top: 2rem;
     text-align: center;
     font-weight: bold;
 }
@@ -21,9 +21,27 @@ body{
 }
 
 #form-task{
-    padding: 2rem 15rem 2rem 15rem;
+    margin: 2rem 5rem 2rem 5rem;
 }
 
 #createTask{
-    margin-top: 3rem;
+    margin-top: 2rem;
+}
+
+#listTask{
+    margin-bottom: 3rem;
+    text-align: center;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+#table{
+    margin: 2rem;
+    text-align: center;
+}
+
+#tableTask td.description {
+    max-width: 200px;
+    word-wrap: break-word;
+    text-align: justify;
 }

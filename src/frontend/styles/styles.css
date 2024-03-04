@@ -28,8 +28,7 @@ body{
     margin-top: 2rem;
 }
 
-#listTask{
-    margin-bottom: 3rem;
+#listTask {
     text-align: center;
     font-weight: bold;
     font-size: x-large;
@@ -40,7 +39,7 @@ body{
     text-align: center;
 }
 
-#tableTask td.description {
+#tableTask td.description{
     max-width: 200px;
     word-wrap: break-word;
     text-align: justify;

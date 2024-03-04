@@ -5,7 +5,6 @@ const aaaa = hoje.getFullYear();
 hoje = aaaa + '-' + mm + '-' + dd;
 
 const tarefas = [];
-let id = 1;
 const taskName = document.getElementById('taskName');
 const category = document.getElementById('category');
 const priority = document.getElementById('priority');
@@ -21,10 +20,10 @@ deadLine.value = hoje;
 function addTask() {
 
     let index = createTaskButton.getAttribute('data-index');
+    let text = "";
 
     if (createTaskButton.innerText === "Criar Tarefa") {
         tarefas.push({
-            id: id,
             nome: taskName.value,
             categoria: category.value,
             prioridade: priority.value,
@@ -33,12 +32,10 @@ function addTask() {
             dataTermino: deadLine.value,
             descricao: description.value
         });
-
-        id ++;
+        text = "Tarefa criada com sucesso!!!";
 
     } else if (createTaskButton.innerText === "Alterar Tarefa") {
         tarefas[index] = {
-            id: tarefas[index].id,
             nome: taskName.value,
             categoria: category.value,
             prioridade: priority.value,
@@ -47,19 +44,20 @@ function addTask() {
             dataTermino: deadLine.value,
             descricao: description.value
         };
-
         createTaskButton.innerText = "Criar Tarefa";
+        text = "Tarefa alterada com sucesso!!!";
     }
 
-/*    taskName.value = '';
+    taskName.value = '';
     category.value = '';
     priority.value = '';
     status.value = '';
     createDate.value = hoje;
     deadLine.value = hoje;
-    description.value = '';*/
+    description.value = '';
 
     listTask(tarefas)
+    alert(text)
 }
 
 document.getElementById('form-task').addEventListener('submit',function(event) {
@@ -78,7 +76,6 @@ function listTask(tarefas) {
         let linha = document.createElement('tr');
 
         linha.innerHTML = `
-            <td>${tarefa.id}</td>
             <td>${tarefa.nome}</td>
             <td>${tarefa.categoria}</td>
             <td>${tarefa.prioridade}</td>
@@ -99,6 +96,7 @@ function listTask(tarefas) {
 function deleteTask(index) {
     tarefas.splice(index, 1);
     listTask(tarefas);
+    alert("Tarefa deletada com sucesso!!!")
 }
 
 function editTask(index) {
